@@ -19,7 +19,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate
     {
         didSet
         {
-            scoreNode.text = "Current Score: \(score)!"
+            scoreNode.text = "Score: \(score)!"
         }
     }
     
