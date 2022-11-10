@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct DropGameFirstView: View
 {
@@ -25,10 +26,9 @@ struct DropGameFirstView: View
     {
         VStack
         {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Drop Game WOAHH")
+            SpriteView(scene: simpleScene)
+                .frame(width: width, height: height)
         }
         .padding()
     }
