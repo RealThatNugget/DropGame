@@ -14,10 +14,10 @@ class EndGameScene : SKScene{
     {
         backgroundColor = .red
         
-        let scoreNode = SKLabelNode(fontNamed: "Comic-Sans")
+        let scoreNode = SKLabelNode(fontNamed: "Papyrus")
         scoreNode.zPosition = 2
         scoreNode.position.x = frame.midX
-        scoreNode.position.y = frame.midY + 30
+        scoreNode.position.y = frame.midY + 35
         scoreNode.fontSize = 20
         scoreNode.color = .black
         scoreNode.text = "Score: \(score)"
@@ -25,15 +25,15 @@ class EndGameScene : SKScene{
         let endNode = SKLabelNode(fontNamed: "Impact")
         endNode.zPosition = 2
         endNode.position.x = frame.midX
-        endNode.position.y = frame.midY + 10
+        endNode.position.y = frame.midY + 8
         endNode.fontSize = 25
         endNode.color = .darkGray
         endNode.text = "GAME OVER."
         
-        let restartNode = SKLabelNode(fontNamed: "Roboto")
+        let restartNode = SKLabelNode(fontNamed: "AcademyEngravedLetPlain")
         restartNode.zPosition = 2
         restartNode.position.x = frame.midX
-        restartNode.position.y = frame.midY - 10
+        restartNode.position.y = frame.midY - 15
         restartNode.fontSize = 20
         restartNode.color = .black
         restartNode.text = "Pinch to restart!"

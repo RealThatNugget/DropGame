@@ -59,9 +59,24 @@ class GameScene : SKScene, SKPhysicsContactDelegate
             node.position = location
             addChild(node)
         }
+        else
+        {
+            endGame()
+        }
     }
     
     //MARK: - Game Methods
+    
+    private func endGame() -> Void
+    {
+        let transition = SKTransition.fade(with: .yellow, duration: 5)
+        let endingScene = EndGameScene()
+        endingScene.score = score
+        endingScene.size = CGSize(width: 300, height: 500)
+        endingScene.scaleMode = .fill
+        
+        self.view?.presentScene(endingScene, transition: transition)
+    }
     
     private func loadBlocks() -> Void
     {
