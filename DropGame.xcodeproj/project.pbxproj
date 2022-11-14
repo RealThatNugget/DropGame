@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		018A75842922C3A000B65462 /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 018A75822922C3A000B65462 /* SparkParticle.sks */; };
 		018A75852922C3A000B65462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018A75832922C3A000B65462 /* Assets.xcassets */; };
+		018A758C2922CB5700B65462 /* switch-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 018A758B2922CB5700B65462 /* switch-sound.mp3 */; };
+		018A758E2922CB9900B65462 /* rickroll.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 018A758D2922CB9900B65462 /* rickroll.mp3 */; };
+		018A75902922D45B00B65462 /* EndGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A758F2922D45B00B65462 /* EndGameScene.swift */; };
 		01A26EF0291D7C2600C9F1C5 /* DropGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A26EEF291D7C2600C9F1C5 /* DropGameApp.swift */; };
 		01A26EF2291D7C2600C9F1C5 /* DropGameFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A26EF1291D7C2600C9F1C5 /* DropGameFirstView.swift */; };
 		01A26EF4291D7C2700C9F1C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A26EF3291D7C2700C9F1C5 /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 /* Begin PBXFileReference section */
 		018A75822922C3A000B65462 /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
 		018A75832922C3A000B65462 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018A758B2922CB5700B65462 /* switch-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "switch-sound.mp3"; sourceTree = "<group>"; };
+		018A758D2922CB9900B65462 /* rickroll.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rickroll.mp3; sourceTree = "<group>"; };
+		018A758F2922D45B00B65462 /* EndGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameScene.swift; sourceTree = "<group>"; };
 		01A26EEC291D7C2600C9F1C5 /* DropGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A26EEF291D7C2600C9F1C5 /* DropGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropGameApp.swift; sourceTree = "<group>"; };
 		01A26EF1291D7C2600C9F1C5 /* DropGameFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropGameFirstView.swift; sourceTree = "<group>"; };
@@ -85,6 +91,15 @@
 				018A75832922C3A000B65462 /* Assets.xcassets */,
 			);
 			path = Particles;
+			sourceTree = "<group>";
+		};
+		018A75862922CA0600B65462 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				018A758D2922CB9900B65462 /* rickroll.mp3 */,
+				018A758B2922CB5700B65462 /* switch-sound.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		01A26EE3291D7C2600C9F1C5 = {
@@ -148,6 +163,7 @@
 		01A26F1A291D7E7A00C9F1C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				018A75862922CA0600B65462 /* Sounds */,
 				01A26EEF291D7C2600C9F1C5 /* DropGameApp.swift */,
 				01A26EF3291D7C2700C9F1C5 /* Assets.xcassets */,
 			);
@@ -166,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				01A26F1D291D7F6A00C9F1C5 /* GameScene.swift */,
+				018A758F2922D45B00B65462 /* EndGameScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -276,7 +293,9 @@
 			files = (
 				01A26EF8291D7C2700C9F1C5 /* Preview Assets.xcassets in Resources */,
 				018A75842922C3A000B65462 /* SparkParticle.sks in Resources */,
+				018A758E2922CB9900B65462 /* rickroll.mp3 in Resources */,
 				018A75852922C3A000B65462 /* Assets.xcassets in Resources */,
+				018A758C2922CB5700B65462 /* switch-sound.mp3 in Resources */,
 				01A26EF4291D7C2700C9F1C5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018A75902922D45B00B65462 /* EndGameScene.swift in Sources */,
 				01A26F1E291D7F6A00C9F1C5 /* GameScene.swift in Sources */,
 				01A26EF2291D7C2600C9F1C5 /* DropGameFirstView.swift in Sources */,
 				01A26EF0291D7C2600C9F1C5 /* DropGameApp.swift in Sources */,

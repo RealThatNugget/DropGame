@@ -23,6 +23,8 @@ class GameScene : SKScene, SKPhysicsContactDelegate
         }
     }
     
+    private var gameBlocks : [SKSpriteNode] = []
+    
     
     //MARK: - sKScene Methods
     override func didMove(to view : SKView) -> Void
@@ -35,29 +37,50 @@ class GameScene : SKScene, SKPhysicsContactDelegate
         scoreNode.position.y = 480
         addChild(scoreNode)
         score = 0
+        
+        //adding sound
+        let backgroundMusic = SKAudioNode(fileNamed: "rickroll")
+        backgroundMusic.name = "music"
+        addChild(backgroundMusic)
+        
+        loadBlocks()
     }
     
     override func touchesBegan(_ touches : Set<UITouch>, with event : UIEvent?) -> Void
     {
         guard let touch = touches.first
         else { return }
-        
-        let currentColor = assignColorAndBitmask()
-        let width = Int (arc4random() % 50)
-        let height = Int (arc4random() % 50)
+   
         let location = touch.location(in: self)
         
-        let node : SKSpriteNode
-        node = SKSpriteNode(color: currentColor, size: CGSize(width: width, height: height))
-        node.position = location
-        
-        node.physicsBody = SKPhysicsBody(rectangleOf:CGSize(width: width, height: height))
-        node.physicsBody?.contactTestBitMask = UInt32(colorMask)
-        
-        addChild(node)
+        if (!gameBlocks.isEmpty)
+        {
+            let node : SKSpriteNode = gameBlocks.removeLast()
+            node.position = location
+            addChild(node)
+        }
     }
     
     //MARK: - Game Methods
+    
+    private func loadBlocks() -> Void
+    {
+        for _ in 0 ..< 50
+        {
+            let currentColor = assignColorAndBitmask()
+            let width = Int (arc4random() % 50)
+            let height = Int (arc4random() % 50)
+            
+            let node : SKSpriteNode
+            node = SKSpriteNode(color: currentColor, size: CGSize(width: width, height: height))
+            
+            node.physicsBody = SKPhysicsBody(rectangleOf:CGSize(width: width, height: height))
+            node.physicsBody?.contactTestBitMask = UInt32(colorMask)
+            
+            gameBlocks.append(node)
+        }
+        
+    }
     
     private func assignColorAndBitmask() -> UIColor{
         let colors: [UIColor] = [.green, .black, .red, .orange, .systemPink, .darkGray, .blue, .cyan, .purple]
@@ -65,6 +88,15 @@ class GameScene : SKScene, SKPhysicsContactDelegate
         colorMask = randomIndex + 1
         
         return colors[randomIndex]
+    }
+    
+    private func updateSound() -> Void
+    {
+        if let sound = childNode(withName: "music")
+        {
+            let speedUp = SKAction.changePlaybackRate(by: 1.5, duration: 10)
+            sound.run(speedUp)
+        }
     }
     
     //MARK: - Collision Methods
@@ -80,12 +112,16 @@ class GameScene : SKScene, SKPhysicsContactDelegate
             let removeExplosion = SKAction.removeFromParent()
             let explosiveSequence = SKAction.sequence([waitTime, removeExplosion])
             
+            let effectSound = SKAction.playSoundFileNamed("switch-sound", waitForCompletion: false)
+            run(effectSound)
+            
             explosion.run(explosiveSequence)
         }
     }
     
     private func annihilate(deadNode : SKNode) -> Void
     {
+        explosionEffect(at: deadNode.position)
         deadNode.removeFromParent()
         score += 10
     }
