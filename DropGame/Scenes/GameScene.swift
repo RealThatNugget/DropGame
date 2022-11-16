@@ -15,6 +15,16 @@ class GameScene : SKScene, SKPhysicsContactDelegate
     
     private let scoreNode : SKLabelNode = SKLabelNode(fontNamed: "Copperplate-Bold")
     
+    private let countTouch : SKLabelNode = SKLabelNode(fontNamed: "ArialMT")
+    
+    private var touches : Int = -0
+    {
+        didSet
+        {
+            countTouch.text = "Touches: \(touches)"
+        }
+    }
+    
     private var score : Int = -0
     {
         didSet
@@ -38,6 +48,12 @@ class GameScene : SKScene, SKPhysicsContactDelegate
         addChild(scoreNode)
         score = 0
         
+        countTouch.zPosition = 2
+        countTouch.position.x = 150
+        countTouch.position.y = 450
+        addChild(countTouch)
+        touches = 0
+        
         //adding sound
         let backgroundMusic = SKAudioNode(fileNamed: "rickroll")
         backgroundMusic.name = "music"
@@ -46,24 +62,26 @@ class GameScene : SKScene, SKPhysicsContactDelegate
         loadBlocks()
     }
     
-    override func touchesBegan(_ touches : Set<UITouch>, with event : UIEvent?) -> Void
+    override func touchesBegan(_ touchesScreen : Set<UITouch>, with event : UIEvent?) -> Void
     {
-        guard let touch = touches.first
+        guard let touchesScreen = touchesScreen.first
         else { return }
    
-        let location = touch.location(in: self)
+        let location = touchesScreen.location(in: self)
         
         if (!gameBlocks.isEmpty)
         {
             let node : SKSpriteNode = gameBlocks.removeLast()
             node.position = location
             addChild(node)
+            touches += 1
         }
         else
         {
             endGame()
         }
     }
+    
     
     //MARK: - Game Methods
     
@@ -80,7 +98,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate
     
     private func loadBlocks() -> Void
     {
-        for _ in 0 ..< 50
+        for _ in 0 ..< 100
         {
             let currentColor = assignColorAndBitmask()
             let width = Int (arc4random() % 50)
