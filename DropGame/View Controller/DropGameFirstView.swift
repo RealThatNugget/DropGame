@@ -28,7 +28,7 @@ struct DropGameFirstView: View
         {
             Text("Drop Game WOAHH")
             SpriteView(scene: simpleScene)
-                .frame(width: width, height: height)
+                .frame(maxWidth: UIDevice.current.userInterfaceIdiom != .pad ? width : .infinity, maxHeight: UIDevice.current.userInterfaceIdiom != .pad ? height : .infinity)
         }
         .padding()
     }
